@@ -10,11 +10,11 @@ namespace SchowekAPI.Models
     {
         public int Id { get; set; }
 
-        [Required(ErrorMessage = "Wprowadź nazwę.")]
+        [Required(ErrorMessage = "Nie wprowadzono nazwy. Wprowadź nazwę schowka.")]
         [MinLength(1, ErrorMessage = "Za krótka nazwa.")]
         public string CatalogName { get; set; }
 
-        public string Icon { get; set; }
+        public string? Icon { get; set; }
 
         [Required]
         public DateTime OnCreated { get; set; }

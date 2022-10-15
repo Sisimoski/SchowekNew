@@ -12,6 +12,7 @@ builder.Services.AddDbContext<DataContext>(options =>
 {
     options.UseSqlite(builder.Configuration.GetConnectionString("DevelopmentConnection"));
 });
+builder.Services.AddScoped<ICatalogRepository, CatalogRepository>();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
