@@ -1,5 +1,7 @@
 # Schowek
 
+![alt text](https://github.com/sisimoski/[SchowekNew]/main/SchowekMockup.png?raw=true)
+
 To jest rework Schowku. Projekt jest w trakcie przerabiania Schowka na API oraz klienta webowego opartego o framework Blazor.
 
 
