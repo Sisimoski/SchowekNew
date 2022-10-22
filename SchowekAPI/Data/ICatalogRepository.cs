@@ -8,7 +8,7 @@ namespace SchowekAPI.Data
 {
     public interface ICatalogRepository
     {
-        Task<List<Catalog>> GetCatalogs();
+        Task<IEnumerable<Catalog>> GetCatalogs();
         Task<Catalog> GetCatalog(int catalogId);
         Task<Catalog> AddCatalog(Catalog catalog);
         Task<Catalog> UpdateCatalog(Catalog catalog);

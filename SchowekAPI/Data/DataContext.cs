@@ -6,7 +6,7 @@ namespace SchowekAPI.Data
     {
         public DataContext(DbContextOptions<DataContext> options) : base(options) { }
 
-        public DbSet<Catalog> Catalogs { get; set; }
-        public DbSet<Item> Items { get; set; }
+        public DbSet<Catalog>? Catalogs { get; set; }
+        public DbSet<Item>? Items { get; set; }
     }
 }

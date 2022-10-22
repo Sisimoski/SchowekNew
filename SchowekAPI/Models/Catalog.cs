@@ -12,14 +12,17 @@ namespace SchowekAPI.Models
 
         [Required(ErrorMessage = "Nie wprowadzono nazwy. Wprowadź nazwę schowka.")]
         [MinLength(1, ErrorMessage = "Za krótka nazwa.")]
-        public string CatalogName { get; set; }
+        public string? CatalogName { get; set; }
+        public string? Description { get; set; }
 
         public string? Icon { get; set; }
 
         [Required]
         public DateTime OnCreated { get; set; }
+        public bool IsDeleted { get; set; }
+        public Colors CatalogColor { get; set; }
 
-        // public ICollection<Item> Items { get; set; }
+        public ICollection<Item>? Items { get; set; }
 
         // public string UserId { get; set; }
 

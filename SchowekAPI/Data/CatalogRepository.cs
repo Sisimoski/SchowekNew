@@ -40,7 +40,7 @@ namespace SchowekAPI.Data
             return catalog;
         }
 
-        public async Task<List<Catalog>> GetCatalogs()
+        public async Task<IEnumerable<Catalog>> GetCatalogs()
         {
             var catalogs = await dataContext.Catalogs.ToListAsync();
             return catalogs;
