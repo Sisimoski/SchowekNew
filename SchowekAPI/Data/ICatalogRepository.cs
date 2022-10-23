@@ -11,7 +11,7 @@ namespace SchowekAPI.Data
         Task<IEnumerable<Catalog>> GetCatalogs();
         Task<Catalog> GetCatalog(int catalogId);
         Task<Catalog> AddCatalog(Catalog catalog);
-        Task<Catalog> UpdateCatalog(Catalog catalog);
+        Task<Catalog?> UpdateCatalog(int catalogId, Catalog catalog);
         Task<Catalog> DeleteCatalog(int catalogId);
     }
 }

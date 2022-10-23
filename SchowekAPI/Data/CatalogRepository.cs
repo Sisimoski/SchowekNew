@@ -23,7 +23,8 @@ namespace SchowekAPI.Data
 
         public async Task<Catalog> GetCatalog(int catalogId)
         {
-            var catalog = await dataContext.Catalogs.FirstOrDefaultAsync(c => c.Id == catalogId);
+            // var catalog = await dataContext.Catalogs.FirstOrDefaultAsync(c => c.Id == catalogId);
+            var catalog = await dataContext.Catalogs.FindAsync(catalogId);
 
             return catalog;
         }
@@ -39,7 +40,7 @@ namespace SchowekAPI.Data
             return catalog;
         }
 
-        public async Task<Catalog> UpdateCatalog(Catalog catalog)
+        public async Task<Catalog?> UpdateCatalog(int catalogId, Catalog catalog)
         {
             // var result = await dataContext.Catalogs.FirstOrDefaultAsync(c => c.Id == catalog.Id);
 
@@ -52,11 +53,18 @@ namespace SchowekAPI.Data
             // }
 
             // return result;
-            // Catalog? c = dataContext.Catalogs.Find(catalog);
-            // if (c is null) return null;
 
-            dataContext.Catalogs.Update(catalog);
+            Catalog? c = dataContext.Catalogs.Find(catalogId);
+            if (c is null) return null;
+
+            c.CatalogName = catalog.CatalogName;
+            c.Description = catalog.Description;
+            c.Icon = catalog.Icon;
+            c.CatalogColor = catalog.CatalogColor;
+
+            dataContext.Catalogs.Update(c);
             await dataContext.SaveChangesAsync();
+
             return catalog;
         }
 

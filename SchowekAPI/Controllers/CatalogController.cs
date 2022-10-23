@@ -31,17 +31,6 @@ namespace SchowekAPI.Controllers
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Catalog>>> Get()
         {
-            // try
-            // {
-            //     if (!data.Catalogs.Any())
-            //         return NotFound();
-            //     return Ok(await data.Catalogs.ToListAsync());
-            // }
-            // catch (System.Exception)
-            // {
-            //     return StatusCode(StatusCodes.Status500InternalServerError);
-            // }
-
             try
             {
                 var catalogs = await this.catalogRepository.GetCatalogs();
@@ -65,11 +54,6 @@ namespace SchowekAPI.Controllers
         [HttpGet("{id}")]
         public async Task<ActionResult<Catalog>> Get(int id)
         {
-            // var catalog = await data.Catalogs.FindAsync(id);
-            // if (catalog is null)
-            //     return BadRequest("Catalog not found.");
-            // return Ok(catalog);
-
             try
             {
                 var result = await this.catalogRepository.GetCatalog(id);
@@ -83,24 +67,15 @@ namespace SchowekAPI.Controllers
         }
 
         [HttpPost]
-        public async Task<ActionResult<Catalog>> AddCatalog([FromBody] Catalog catalog)
+        public async Task<ActionResult<Catalog>> Create([FromBody] Catalog catalog)
         {
-            // if (!ModelState.IsValid)
-            // {
-            //     return BadRequest(ModelState);
-            // }
-            // data.Catalogs.Add(catalog);
-            // await data.SaveChangesAsync();
-
-            // return Ok(await data.Catalogs.ToListAsync());
-
             try
             {
                 if (!ModelState.IsValid)
                     return BadRequest(ModelState);
 
                 var result = await this.catalogRepository.AddCatalog(catalog);
-                if (result is null) return NoContent();
+                if (result is null) return BadRequest();
                 return Ok(result);
             }
             catch (System.Exception)
@@ -110,7 +85,7 @@ namespace SchowekAPI.Controllers
         }
 
         [HttpPut("{id}")]
-        public async Task<ActionResult<Catalog>> UpdateCatalog([FromBody] Catalog catalog)
+        public async Task<IActionResult> Update(int catalogId, [FromBody] Catalog catalog)
         {
             // var dbCatalog = await data.Catalogs.FindAsync(request.Id);
             // if (dbCatalog is null)
@@ -131,9 +106,12 @@ namespace SchowekAPI.Controllers
                     return BadRequest(ModelState);
 
                 if (catalog is null) return BadRequest();
-                var result = await this.catalogRepository.UpdateCatalog(catalog);
-                if (result is null) return NotFound();
-                return Ok(result);
+                Catalog? existing = await catalogRepository.GetCatalog(catalogId);
+                if (existing is null) return NotFound();
+
+                await catalogRepository.UpdateCatalog(catalogId, catalog);
+
+                return new NoContentResult();
             }
             catch (System.Exception)
             {
@@ -150,15 +128,6 @@ namespace SchowekAPI.Controllers
         [HttpDelete("{id}")]
         public async Task<ActionResult<Catalog>> Delete(int id)
         {
-            // var dbCatalog = await data.Catalogs.FindAsync(id);
-            // if (dbCatalog is null)
-            //     return BadRequest("Catalog not found.");
-
-            // data.Catalogs.Remove(dbCatalog);
-            // await data.SaveChangesAsync();
-
-            // return Ok(await data.Catalogs.ToListAsync());
-
             try
             {
                 if (!ModelState.IsValid)
