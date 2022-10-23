@@ -15,6 +15,8 @@ builder.Services.AddDbContext<DataContext>(options =>
 builder.Services.AddScoped<ICatalogRepository, CatalogRepository>();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+builder.Services.AddAutoMapper(typeof(Program));
+builder.Services.AddControllersWithViews();
 
 // builder.Services.AddCors(options =>
 // {

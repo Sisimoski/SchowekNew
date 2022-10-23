@@ -9,11 +9,7 @@ namespace Schowek.Library.Dtos
     {
         public string? CatalogName { get; set; }
         public string? Description { get; set; }
-
         public string? Icon { get; set; }
-
         public DateTime OnCreated { get; set; }
-
-        public ICollection<Item>? Items { get; set; }
     }
 }

@@ -15,22 +15,10 @@ namespace SchowekAPI.Data
             this.dataContext = dataContext;
         }
 
-        public async Task<Catalog> AddCatalog(Catalog catalog)
+        public async Task<IEnumerable<Catalog>> GetCatalogs()
         {
-            var result = await dataContext.Catalogs.AddAsync(catalog);
-            await dataContext.SaveChangesAsync();
-            return result.Entity;
-        }
-
-        public async Task<Catalog> DeleteCatalog(int catalogId)
-        {
-            var result = await dataContext.Catalogs.FirstOrDefaultAsync(c => c.Id == catalogId);
-            if (result is not null)
-            {
-                dataContext.Catalogs.Remove(result);
-                await dataContext.SaveChangesAsync();
-            }
-            return result;
+            var catalogs = await dataContext.Catalogs.ToListAsync();
+            return catalogs;
         }
 
         public async Task<Catalog> GetCatalog(int catalogId)
@@ -40,15 +28,55 @@ namespace SchowekAPI.Data
             return catalog;
         }
 
-        public async Task<IEnumerable<Catalog>> GetCatalogs()
+        public async Task<Catalog> AddCatalog(Catalog catalog)
         {
-            var catalogs = await dataContext.Catalogs.ToListAsync();
-            return catalogs;
+            // var result = await dataContext.Catalogs.AddAsync(catalog);
+            // await dataContext.SaveChangesAsync();
+            // return result.Entity;
+
+            await dataContext.Catalogs.AddAsync(catalog);
+            await dataContext.SaveChangesAsync();
+            return catalog;
         }
 
-        public Task<Catalog> UpdateCatalog(Catalog catalog)
+        public async Task<Catalog> UpdateCatalog(Catalog catalog)
         {
-            throw new NotImplementedException();
+            // var result = await dataContext.Catalogs.FirstOrDefaultAsync(c => c.Id == catalog.Id);
+
+            // if (result != null)
+            // {
+            //     result.CategoryName = category.CategoryName;
+            //     result.Icon = category.Icon;
+
+            //     await _dbContext.SaveChangesAsync();
+            // }
+
+            // return result;
+            // Catalog? c = dataContext.Catalogs.Find(catalog);
+            // if (c is null) return null;
+
+            dataContext.Catalogs.Update(catalog);
+            await dataContext.SaveChangesAsync();
+            return catalog;
+        }
+
+        public async Task<Catalog> DeleteCatalog(int catalogId)
+        {
+            // var result = await dataContext.Catalogs.FirstOrDefaultAsync(c => c.Id == catalogId);
+            // if (result is not null)
+            // {
+            //     dataContext.Catalogs.Remove(result);
+            //     await dataContext.SaveChangesAsync();
+            // }
+            // return result;
+
+            Catalog? catalog = dataContext.Catalogs.Find(catalogId);
+            if (catalog is null) return null;
+
+            dataContext.Catalogs.Remove(catalog);
+            await dataContext.SaveChangesAsync();
+
+            return catalog;
         }
     }
 }

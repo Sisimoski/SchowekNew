@@ -8,7 +8,7 @@ namespace SchowekAPI.Data
 {
     public interface IItemRepository
     {
-        Task<List<Item>> GetItems();
+        Task<IEnumerable<Item>> GetItems();
         Task<Item> GetItem(int itemId);
         Task<Item> AddItem(Item item);
         Task<Item> UpdateItem(Item item);

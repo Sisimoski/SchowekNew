@@ -7,6 +7,13 @@ namespace SchowekAPI.Data
 {
     public class ItemRepository : IItemRepository
     {
+        private readonly DataContext db;
+
+        public ItemRepository(DataContext db)
+        {
+            this.db = db;
+        }
+
         public Task<Item> AddItem(Item item)
         {
             throw new NotImplementedException();
@@ -22,9 +29,11 @@ namespace SchowekAPI.Data
             throw new NotImplementedException();
         }
 
-        public Task<List<Item>> GetItems()
+        public Task<IEnumerable<Item>> GetItems()
         {
             throw new NotImplementedException();
+            // var items = await db.Items.ToListAsync();
+            // return items;
         }
 
         public Task<Item> UpdateItem(Item item)
