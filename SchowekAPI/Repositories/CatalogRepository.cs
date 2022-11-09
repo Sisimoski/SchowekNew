@@ -1,11 +1,6 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.EntityFrameworkCore;
 using Schowek.Library.Interfaces;
 using Schowek.Library.Models;
-using Schowek.Library.Models.Enums;
+using SchowekAPI.Data;
 
 namespace SchowekAPI.Repositories
 {
@@ -19,16 +14,16 @@ namespace SchowekAPI.Repositories
 
         public async Task<IEnumerable<Catalog>> GetCatalogs()
         {
-            var catalogs = await dataContext.Catalogs.ToListAsync();
+            var catalogs = await dataContext.Catalogs!.ToListAsync();
             return catalogs;
         }
 
         public async Task<Catalog> GetCatalog(int catalogId)
         {
             // var catalog = await dataContext.Catalogs.FirstOrDefaultAsync(c => c.Id == catalogId);
-            var catalog = await dataContext.Catalogs.FindAsync(catalogId);
+            var catalog = await dataContext.Catalogs!.FindAsync(catalogId);
 
-            return catalog;
+            return catalog!;
         }
 
         public async Task<Catalog> AddCatalog(Catalog catalog)
@@ -37,7 +32,7 @@ namespace SchowekAPI.Repositories
             // await dataContext.SaveChangesAsync();
             // return result.Entity;
 
-            await dataContext.Catalogs.AddAsync(catalog);
+            await dataContext.Catalogs!.AddAsync(catalog);
             await dataContext.SaveChangesAsync();
             return catalog;
         }
@@ -56,7 +51,7 @@ namespace SchowekAPI.Repositories
 
             // return result;
 
-            Catalog? c = dataContext.Catalogs.Find(catalogId);
+            Catalog? c = dataContext.Catalogs!.Find(catalogId);
             if (c is null) return null;
 
             c.CatalogName = catalog.CatalogName;
@@ -80,8 +75,8 @@ namespace SchowekAPI.Repositories
             // }
             // return result;
 
-            Catalog? catalog = dataContext.Catalogs.Find(catalogId);
-            if (catalog is null) return null;
+            Catalog? catalog = dataContext.Catalogs!.Find(catalogId);
+            if (catalog is null) return null!;
 
             dataContext.Catalogs.Remove(catalog);
             await dataContext.SaveChangesAsync();

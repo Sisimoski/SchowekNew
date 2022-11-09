@@ -1,4 +1,3 @@
-using Microsoft.EntityFrameworkCore;
 using Schowek.Library.Models;
 
 namespace SchowekAPI.Data
@@ -7,7 +6,15 @@ namespace SchowekAPI.Data
     {
         public DataContext(DbContextOptions<DataContext> options) : base(options) { }
 
-        public DbSet<Catalog>? Catalogs { get; set; }
-        public DbSet<Item>? Items { get; set; }
+        public DbSet<Catalog>? Catalogs { get; set; } = null!;
+        public DbSet<Item>? Items { get; set; } = null!;
+
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        {
+            if (!optionsBuilder.IsConfigured)
+            {
+                optionsBuilder.UseSqlite("app.db");
+            }
+        }
     }
 }
