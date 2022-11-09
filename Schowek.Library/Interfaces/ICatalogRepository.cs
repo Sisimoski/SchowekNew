@@ -1,10 +1,6 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using SchowekAPI.Models;
+using Schowek.Library.Models;
 
-namespace SchowekAPI.Data
+namespace Schowek.Library.Interfaces
 {
     public interface ICatalogRepository
     {

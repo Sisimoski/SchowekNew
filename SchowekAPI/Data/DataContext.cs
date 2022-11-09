@@ -1,4 +1,5 @@
 using Microsoft.EntityFrameworkCore;
+using Schowek.Library.Models;
 
 namespace SchowekAPI.Data
 {

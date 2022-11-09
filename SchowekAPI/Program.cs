@@ -1,6 +1,8 @@
 global using SchowekAPI.Data;
-global using SchowekAPI.Models;
+global using Schowek.Library.Models;
 global using Microsoft.EntityFrameworkCore;
+using Schowek.Library.Interfaces;
+using SchowekAPI.Repositories;
 
 var builder = WebApplication.CreateBuilder(args);
 

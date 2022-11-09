@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
 using Schowek.Library.Dtos;
+using Schowek.Library.Models;
 
 namespace SchowekAPI.Helpers
 {

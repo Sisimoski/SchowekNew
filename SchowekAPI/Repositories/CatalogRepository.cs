@@ -3,9 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
-using SchowekAPI.Models;
+using Schowek.Library.Interfaces;
+using Schowek.Library.Models;
+using Schowek.Library.Models.Enums;
 
-namespace SchowekAPI.Data
+namespace SchowekAPI.Repositories
 {
     public class CatalogRepository : ICatalogRepository
     {

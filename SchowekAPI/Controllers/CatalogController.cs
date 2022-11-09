@@ -1,9 +1,10 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Http;
 using System.Linq;
-using SchowekAPI.Models;
+using Schowek.Library.Models;
 using AutoMapper;
 using Schowek.Library.Dtos;
+using Schowek.Library.Interfaces;
 
 namespace SchowekAPI.Controllers
 {
