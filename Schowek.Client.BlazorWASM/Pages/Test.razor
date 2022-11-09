@@ -1,0 +1,29 @@
+@page "/test"
+@using Library.Models
+@inject HttpClient Http
+
+<PageTitle>Test</PageTitle>
+
+<h1>Test</h1>
+@if (catalogs == null)
+{
+    <p>No Todo Items found.</p>
+}
+else
+{
+    <ul>
+    @foreach (var item in catalogs)
+        {
+            <li>@item.CatalogName</li>
+        }
+    </ul>
+}
+
+@code {
+    private const string ServiceEndpoint = "https://localhost:5001/api/Catalog";
+    private Catalog[]? catalogs;
+
+
+    protected override async Task OnInitializedAsync() =>
+    catalogs = await Http.GetFromJsonAsync<Catalog[]>(ServiceEndpoint);
+}
