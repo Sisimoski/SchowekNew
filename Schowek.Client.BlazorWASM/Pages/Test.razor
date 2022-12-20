@@ -1,6 +1,8 @@
 @page "/test"
 @using Library.Models
+@using Library.Interfaces
 @inject HttpClient Http
+@inject ICatalogRepository catalogRepository
 
 <PageTitle>Test</PageTitle>
 
@@ -12,7 +14,7 @@
 else
 {
     <ul>
-    @foreach (var item in catalogs)
+        @foreach (var item in catalogs)
         {
             <li>@item.CatalogName</li>
         }
@@ -21,9 +23,26 @@ else
 
 @code {
     private const string ServiceEndpoint = "https://localhost:5001/api/Catalog";
-    private Catalog[]? catalogs;
+    // private Catalog[]? catalogs;
+    private IEnumerable<Catalog>? catalogs;
 
 
-    protected override async Task OnInitializedAsync() =>
-    catalogs = await Http.GetFromJsonAsync<Catalog[]>(ServiceEndpoint);
+    //protected override async Task OnInitializedAsync() =>
+    //catalogs = await Http.GetFromJsonAsync<Catalog[]>(ServiceEndpoint);
+    protected override async Task OnInitializedAsync()
+    {
+        try
+        {
+            if (catalogs is not null)
+                catalogs = await catalogRepository.GetCatalogs();
+            else
+            {
+
+            }
+        }
+        catch (Exception e)
+        {
+            Console.WriteLine(e);
+        }
+    }
 }
