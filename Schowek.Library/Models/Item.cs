@@ -1,8 +1,4 @@
-using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Threading.Tasks;
 using Schowek.Library.Models.Enums;
 
 namespace Schowek.Library.Models
@@ -22,10 +18,5 @@ namespace Schowek.Library.Models
 
         public int CatalogId { get; set; }
         public Catalog? Catalog { get; set; }
-
-        // public string UserId { get; set; }
-
-        // [ForeignKey("UserId")]
-        // public AspNetUsers AspNetUsers { get; set; }
     }
 }

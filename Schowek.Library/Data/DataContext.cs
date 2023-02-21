@@ -11,8 +11,8 @@ namespace Schowek.Library.Data
         }
         public DataContext(DbContextOptions<DataContext> options) : base(options) { }
 
-        public DbSet<Catalog> Catalogs { get; set; } = null;
-        public DbSet<Item> Items { get; set; } = null;
+        public DbSet<Catalog>? Catalogs { get; set; } = null;
+        public DbSet<Item>? Items { get; set; } = null;
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {

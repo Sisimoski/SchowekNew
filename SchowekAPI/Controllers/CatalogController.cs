@@ -34,7 +34,6 @@ namespace SchowekAPI.Controllers
             try
             {
                 var catalogs = await this.catalogRepository.GetCatalogsAsync();
-                // var catalogsResult = this.mapper.Map<CatalogDTO>(catalogs);
 
                 if (catalogs is null)
                 {
@@ -85,31 +84,18 @@ namespace SchowekAPI.Controllers
         }
 
         [HttpPut("{id}")]
-        public async Task<IActionResult> Update(int catalogId, [FromBody] Catalog catalog)
+        public async Task<IActionResult> Update([FromBody] Catalog catalog)
         {
-            // var dbCatalog = await data.Catalogs.FindAsync(request.Id);
-            // if (dbCatalog is null)
-            //     return BadRequest("Catalog not found.");
-
-            // dbCatalog.CatalogName = request.CatalogName;
-            // dbCatalog.Icon = request.Icon;
-            // dbCatalog.OnCreated = request.OnCreated;
-
-            // await data.SaveChangesAsync();
-
-            // return Ok(await data.Catalogs.ToListAsync());
-
-            /// TODO !!!!!!!!!!!!Do poprawy!!!!!!!!!!!
             try
             {
                 if (!ModelState.IsValid)
                     return BadRequest(ModelState);
 
                 if (catalog is null) return BadRequest();
-                Catalog? existing = await catalogRepository.GetCatalogAsync(catalogId);
+                Catalog? existing = await catalogRepository.GetCatalogAsync(catalog.Id);
                 if (existing is null) return NotFound();
 
-                await catalogRepository.UpdateCatalogAsync(catalogId, catalog);
+                await catalogRepository.UpdateCatalogAsync(catalog.Id, catalog);
 
                 return new NoContentResult();
             }
@@ -117,12 +103,6 @@ namespace SchowekAPI.Controllers
             {
                 return StatusCode(StatusCodes.Status500InternalServerError);
             }
-            // if (catalog is null) return BadRequest();
-            // // var result = await catalogRepository.GetCatalog(catalog);
-
-            // var result = await catalogRepository.UpdateCatalog(catalog);
-            // if (result is null) return NotFound();
-            // return Ok(result);
         }
 
         [HttpDelete("{id}")]

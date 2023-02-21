@@ -1,8 +1,4 @@
-using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Threading.Tasks;
 using Schowek.Library.Models.Enums;
 
 namespace Schowek.Library.Models
@@ -13,7 +9,7 @@ namespace Schowek.Library.Models
 
         [Required(ErrorMessage = "Nie wprowadzono nazwy. Wprowadź nazwę schowka.")]
         [MinLength(1, ErrorMessage = "Za krótka nazwa.")]
-        public string CatalogName { get; set; }
+        public string? CatalogName { get; set; }
         public string? Description { get; set; }
 
         public string? Icon { get; set; }
@@ -24,10 +20,5 @@ namespace Schowek.Library.Models
         public Colors? CatalogColor { get; set; }
 
         public ICollection<Item>? Items { get; set; }
-
-        // public string UserId { get; set; }
-
-        // [ForeignKey("UserId")]
-        // public virtual AspNetUsers AspNetUsers { get; set; }
     }
 }
