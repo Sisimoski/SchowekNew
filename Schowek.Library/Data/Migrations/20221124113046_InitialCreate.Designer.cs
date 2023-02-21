@@ -2,22 +2,24 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using SchowekAPI.Data;
+using Schowek.Library.Data;
 
 #nullable disable
 
-namespace SchowekAPI.Migrations
+namespace Schowek.Library.Data.Migrations
 {
     [DbContext(typeof(DataContext))]
-    partial class DataContextModelSnapshot : ModelSnapshot
+    [Migration("20221124113046_InitialCreate")]
+    partial class InitialCreate
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "6.0.9");
 
-            modelBuilder.Entity("SchowekAPI.Models.Catalog", b =>
+            modelBuilder.Entity("Schowek.Library.Models.Catalog", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -47,7 +49,7 @@ namespace SchowekAPI.Migrations
                     b.ToTable("Catalogs");
                 });
 
-            modelBuilder.Entity("SchowekAPI.Models.Item", b =>
+            modelBuilder.Entity("Schowek.Library.Models.Item", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -84,9 +86,9 @@ namespace SchowekAPI.Migrations
                     b.ToTable("Items");
                 });
 
-            modelBuilder.Entity("SchowekAPI.Models.Item", b =>
+            modelBuilder.Entity("Schowek.Library.Models.Item", b =>
                 {
-                    b.HasOne("SchowekAPI.Models.Catalog", "Catalog")
+                    b.HasOne("Schowek.Library.Models.Catalog", "Catalog")
                         .WithMany("Items")
                         .HasForeignKey("CatalogId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -95,7 +97,7 @@ namespace SchowekAPI.Migrations
                     b.Navigation("Catalog");
                 });
 
-            modelBuilder.Entity("SchowekAPI.Models.Catalog", b =>
+            modelBuilder.Entity("Schowek.Library.Models.Catalog", b =>
                 {
                     b.Navigation("Items");
                 });

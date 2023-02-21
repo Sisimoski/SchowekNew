@@ -13,7 +13,7 @@ namespace Schowek.Library.Models
 
         [Required(ErrorMessage = "Nie wprowadzono nazwy. Wprowadź nazwę schowka.")]
         [MinLength(1, ErrorMessage = "Za krótka nazwa.")]
-        public string? CatalogName { get; set; }
+        public string CatalogName { get; set; }
         public string? Description { get; set; }
 
         public string? Icon { get; set; }
@@ -21,7 +21,7 @@ namespace Schowek.Library.Models
         [Required]
         public DateTime OnCreated { get; set; }
         public bool IsDeleted { get; set; }
-        public Colors CatalogColor { get; set; }
+        public Colors? CatalogColor { get; set; }
 
         public ICollection<Item>? Items { get; set; }
 

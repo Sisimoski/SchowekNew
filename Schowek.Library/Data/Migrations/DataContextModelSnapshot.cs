@@ -2,36 +2,42 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
-using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using SchowekAPI.Data;
+using Schowek.Library.Data;
 
 #nullable disable
 
-namespace SchowekAPI.Migrations
+namespace Schowek.Library.Data.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20221006204729_CreateInitial")]
-    partial class CreateInitial
+    partial class DataContextModelSnapshot : ModelSnapshot
     {
-        protected override void BuildTargetModel(ModelBuilder modelBuilder)
+        protected override void BuildModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "6.0.9");
 
-            modelBuilder.Entity("SchowekAPI.Models.Catalog", b =>
+            modelBuilder.Entity("Schowek.Library.Models.Catalog", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int>("CatalogColor")
                         .HasColumnType("INTEGER");
 
                     b.Property<string>("CatalogName")
                         .IsRequired()
                         .HasColumnType("TEXT");
 
-                    b.Property<string>("Icon")
-                        .IsRequired()
+                    b.Property<string>("Description")
                         .HasColumnType("TEXT");
+
+                    b.Property<string>("Icon")
+                        .HasColumnType("TEXT");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("INTEGER");
 
                     b.Property<DateTime>("OnCreated")
                         .HasColumnType("TEXT");
@@ -41,7 +47,7 @@ namespace SchowekAPI.Migrations
                     b.ToTable("Catalogs");
                 });
 
-            modelBuilder.Entity("SchowekAPI.Models.Item", b =>
+            modelBuilder.Entity("Schowek.Library.Models.Item", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -50,26 +56,25 @@ namespace SchowekAPI.Migrations
                     b.Property<int>("CatalogId")
                         .HasColumnType("INTEGER");
 
+                    b.Property<string>("Content")
+                        .HasColumnType("TEXT");
+
                     b.Property<string>("FileName")
-                        .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.Property<string>("FilePath")
-                        .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.Property<long>("FileSize")
                         .HasColumnType("INTEGER");
 
                     b.Property<string>("FileType")
-                        .IsRequired()
                         .HasColumnType("TEXT");
+
+                    b.Property<int>("ItemColor")
+                        .HasColumnType("INTEGER");
 
                     b.Property<DateTime>("OnCreated")
-                        .HasColumnType("TEXT");
-
-                    b.Property<string>("Text")
-                        .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.HasKey("Id");
@@ -79,15 +84,20 @@ namespace SchowekAPI.Migrations
                     b.ToTable("Items");
                 });
 
-            modelBuilder.Entity("SchowekAPI.Models.Item", b =>
+            modelBuilder.Entity("Schowek.Library.Models.Item", b =>
                 {
-                    b.HasOne("SchowekAPI.Models.Catalog", "Catalog")
-                        .WithMany()
+                    b.HasOne("Schowek.Library.Models.Catalog", "Catalog")
+                        .WithMany("Items")
                         .HasForeignKey("CatalogId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("Catalog");
+                });
+
+            modelBuilder.Entity("Schowek.Library.Models.Catalog", b =>
+                {
+                    b.Navigation("Items");
                 });
 #pragma warning restore 612, 618
         }
