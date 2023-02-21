@@ -38,6 +38,8 @@ namespace Schowek.Library.Repositories
             Catalog? c = dataContext.Catalogs!.Find(catalogId);
             if (c is null) return null;
 
+            dataContext.Entry(catalog).State = EntityState.Modified;
+
             c.CatalogName = catalog.CatalogName;
             c.Description = catalog.Description;
             c.Icon = catalog.Icon;
