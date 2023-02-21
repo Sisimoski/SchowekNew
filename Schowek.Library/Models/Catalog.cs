@@ -1,8 +1,4 @@
-using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Threading.Tasks;
 using Schowek.Library.Models.Enums;
 
 namespace Schowek.Library.Models
@@ -24,10 +20,5 @@ namespace Schowek.Library.Models
         public Colors? CatalogColor { get; set; }
 
         public ICollection<Item>? Items { get; set; }
-
-        // public string UserId { get; set; }
-
-        // [ForeignKey("UserId")]
-        // public virtual AspNetUsers AspNetUsers { get; set; }
     }
 }
