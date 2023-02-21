@@ -3,7 +3,6 @@ using Microsoft.AspNetCore.Http;
 using System.Linq;
 using Schowek.Library.Models;
 using AutoMapper;
-using Schowek.Library.Dtos;
 using Schowek.Library.Interfaces;
 
 namespace SchowekAPI.Controllers
@@ -34,7 +33,7 @@ namespace SchowekAPI.Controllers
         {
             try
             {
-                var catalogs = await this.catalogRepository.GetCatalogs();
+                var catalogs = await this.catalogRepository.GetCatalogsAsync();
                 // var catalogsResult = this.mapper.Map<CatalogDTO>(catalogs);
 
                 if (catalogs is null)
@@ -57,7 +56,7 @@ namespace SchowekAPI.Controllers
         {
             try
             {
-                var result = await this.catalogRepository.GetCatalog(id);
+                var result = await this.catalogRepository.GetCatalogAsync(id);
                 if (result is null) return NotFound();
                 return Ok(result);
             }
@@ -75,7 +74,7 @@ namespace SchowekAPI.Controllers
                 if (!ModelState.IsValid)
                     return BadRequest(ModelState);
 
-                var result = await this.catalogRepository.AddCatalog(catalog);
+                var result = await this.catalogRepository.AddCatalogAsync(catalog);
                 if (result is null) return BadRequest();
                 return Ok(result);
             }
@@ -107,10 +106,10 @@ namespace SchowekAPI.Controllers
                     return BadRequest(ModelState);
 
                 if (catalog is null) return BadRequest();
-                Catalog? existing = await catalogRepository.GetCatalog(catalogId);
+                Catalog? existing = await catalogRepository.GetCatalogAsync(catalogId);
                 if (existing is null) return NotFound();
 
-                await catalogRepository.UpdateCatalog(catalogId, catalog);
+                await catalogRepository.UpdateCatalogAsync(catalogId, catalog);
 
                 return new NoContentResult();
             }
@@ -134,9 +133,9 @@ namespace SchowekAPI.Controllers
                 if (!ModelState.IsValid)
                     return BadRequest(ModelState);
 
-                var result = await catalogRepository.GetCatalog(id);
+                var result = await catalogRepository.GetCatalogAsync(id);
                 if (result is null) return NotFound();
-                await catalogRepository.DeleteCatalog(id);
+                await catalogRepository.DeleteCatalogAsync(id);
                 return Ok(result);
             }
             catch (System.Exception)

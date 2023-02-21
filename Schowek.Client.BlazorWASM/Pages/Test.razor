@@ -14,7 +14,7 @@
 else
 {
     <ul>
-        @foreach (var item in catalogs)
+    @foreach (var item in catalogs)
         {
             <li>@item.CatalogName</li>
         }
@@ -34,7 +34,7 @@ else
         try
         {
             if (catalogs is not null)
-                catalogs = await catalogRepository.GetCatalogs();
+                catalogs = await catalogRepository.GetCatalogsAsync();
             else
             {
 
