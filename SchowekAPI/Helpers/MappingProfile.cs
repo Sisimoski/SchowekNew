@@ -1,8 +1,5 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using AutoMapper;
+using Schowek.Library.DTOs;
 using Schowek.Library.Models;
 
 namespace SchowekAPI.Helpers
@@ -11,7 +8,7 @@ namespace SchowekAPI.Helpers
     {
         public MappingProfile()
         {
-            // CreateMap<Catalog, CatalogDTO>();
+            CreateMap<Catalog, CatalogDTO>();
         }
     }
 }

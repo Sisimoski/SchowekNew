@@ -1,9 +1,8 @@
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Http;
-using System.Linq;
 using Schowek.Library.Models;
 using AutoMapper;
 using Schowek.Library.Interfaces;
+using Schowek.Library.DTOs;
 
 namespace SchowekAPI.Controllers
 {
@@ -34,14 +33,15 @@ namespace SchowekAPI.Controllers
             try
             {
                 var catalogs = await this.catalogRepository.GetCatalogsAsync();
+                var result = mapper.Map<IEnumerable<CatalogDTO>>(catalogs);
 
-                if (catalogs is null)
+                if (result is null)
                 {
                     return NotFound();
                 }
                 else
                 {
-                    return Ok(catalogs);
+                    return Ok(result);
                 }
             }
             catch (System.Exception)
