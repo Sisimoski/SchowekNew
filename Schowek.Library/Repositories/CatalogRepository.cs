@@ -15,7 +15,7 @@ namespace Schowek.Library.Repositories
 
         public async Task<IEnumerable<Catalog>> GetCatalogsAsync()
         {
-            var catalogs = await dataContext.Catalogs!.ToListAsync();
+            var catalogs = await dataContext.Catalogs!.Include(c => c.Items).ToListAsync();
             return catalogs;
         }
 
