@@ -2,7 +2,6 @@ using Microsoft.AspNetCore.Mvc;
 using Schowek.Library.Models;
 using AutoMapper;
 using Schowek.Library.Interfaces;
-using Schowek.Library.DTOs;
 
 namespace SchowekAPI.Controllers
 {
@@ -11,13 +10,6 @@ namespace SchowekAPI.Controllers
     [ApiController]
     public class CatalogController : ControllerBase
     {
-        // private readonly DataContext data;
-
-        // public CatalogController(DataContext data)
-        // {
-        //     this.data = data;
-        // }
-
         private readonly IMapper mapper;
         private readonly ICatalogRepository catalogRepository;
 
@@ -33,7 +25,6 @@ namespace SchowekAPI.Controllers
             try
             {
                 var catalogs = await this.catalogRepository.GetCatalogsAsync();
-                // var result = mapper.Map<IEnumerable<CatalogDTO>>(catalogs);
 
                 if (catalogs is null)
                 {
