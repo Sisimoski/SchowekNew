@@ -21,8 +21,8 @@ namespace Schowek.Library.Repositories
 
         public async Task<Catalog> GetCatalogAsync(int catalogId)
         {
-            var catalog = await dataContext.Catalogs!.FindAsync(catalogId);
-
+            // var catalog = await dataContext.Catalogs!.FindAsync(catalogId);
+            var catalog = await dataContext.Catalogs!.Include(c => c.Items).FirstOrDefaultAsync(c => c.Id == catalogId);
             return catalog!;
         }
 
@@ -64,7 +64,7 @@ namespace Schowek.Library.Repositories
 
         public IEnumerable<Catalog> GetCatalogs()
         {
-            var catalogs = dataContext.Catalogs!.ToList();
+            var catalogs = dataContext.Catalogs!.Include(c => c.Items).ToList();
             return catalogs;
         }
 
