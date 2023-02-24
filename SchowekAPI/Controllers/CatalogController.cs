@@ -33,15 +33,15 @@ namespace SchowekAPI.Controllers
             try
             {
                 var catalogs = await this.catalogRepository.GetCatalogsAsync();
-                var result = mapper.Map<IEnumerable<CatalogDTO>>(catalogs);
+                // var result = mapper.Map<IEnumerable<CatalogDTO>>(catalogs);
 
-                if (result is null)
+                if (catalogs is null)
                 {
                     return NotFound();
                 }
                 else
                 {
-                    return Ok(result);
+                    return Ok(catalogs);
                 }
             }
             catch (System.Exception)
