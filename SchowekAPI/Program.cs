@@ -1,5 +1,4 @@
 global using Microsoft.EntityFrameworkCore;
-using Schowek.Library.Models;
 using Schowek.Library.Interfaces;
 using Schowek.Library.Data;
 using Schowek.Library.Repositories;
@@ -14,6 +13,7 @@ builder.Services.AddDbContext<DataContext>(options =>
 {
     options.UseSqlite(builder.Configuration.GetConnectionString("DevelopmentConnection"));
 });
+builder.Services.AddScoped<Seeder>();
 builder.Services.AddScoped<ICatalogRepository, CatalogRepository>();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
@@ -28,6 +28,11 @@ builder.Services.AddCors(options =>
 });
 
 var app = builder.Build();
+
+var scope = app.Services.CreateScope();
+var seeder = scope.ServiceProvider.GetRequiredService<Seeder>();
+
+seeder.Seed();
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
