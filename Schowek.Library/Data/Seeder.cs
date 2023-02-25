@@ -17,7 +17,7 @@ namespace Schowek.Library.Data
         {
             if (_dbContext.Database.CanConnect())
             {
-                if (!_dbContext.Catalogs.Any())
+                if (!_dbContext.Catalogs!.Any())
                 {
                     var catalogs = GetCatalogs();
                     _dbContext.AddRange(catalogs);

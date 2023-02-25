@@ -9,6 +9,8 @@ namespace SchowekAPI.Helpers
         public MappingProfile()
         {
             CreateMap<Catalog, CatalogDTO>();
+            CreateMap<CreateCatalogDTO, Catalog>();
+            CreateMap<Item, ItemDTO>();
         }
     }
 }
