@@ -44,11 +44,13 @@ namespace SchowekAPI.Controllers
         }
 
         [HttpGet("{id}")]
-        public async Task<ActionResult<Catalog>> Get(int id)
+        public async Task<ActionResult<CatalogDTO>> Get(int id)
         {
             try
             {
-                var result = await this.catalogRepository.GetCatalogAsync(id);
+                var catalog = await this.catalogRepository.GetCatalogAsync(id);
+                var result = mapper.Map<CatalogDTO>(catalog);
+
                 if (result is null) return NotFound();
                 return Ok(result);
             }
@@ -59,16 +61,17 @@ namespace SchowekAPI.Controllers
         }
 
         [HttpPost]
-        public async Task<ActionResult<Catalog>> Create([FromBody] Catalog body)
+        public async Task<ActionResult<Catalog>> Create([FromBody] CreateCatalogDTO body)
         {
             try
             {
                 if (!ModelState.IsValid)
                     return BadRequest(ModelState);
 
-                var result = await this.catalogRepository.AddCatalogAsync(body);
+                var catalog = mapper.Map<Catalog>(body);
+                var result = await this.catalogRepository.AddCatalogAsync(catalog);
                 if (result is null) return BadRequest();
-                return Ok(result);
+                return Created($"/api/catalog/{catalog.Id}", result);
             }
             catch (System.Exception)
             {
