@@ -80,7 +80,7 @@ namespace SchowekAPI.Controllers
         }
 
         [HttpPut("{id}")]
-        public async Task<IActionResult> Update([FromBody] Catalog body)
+        public async Task<ActionResult<Catalog>> Update(int id, [FromBody] CreateCatalogDTO body)
         {
             try
             {
@@ -88,10 +88,11 @@ namespace SchowekAPI.Controllers
                     return BadRequest(ModelState);
 
                 if (body is null) return BadRequest();
-                Catalog? existing = await catalogRepository.GetCatalogAsync(body.Id);
+                Catalog? existing = await catalogRepository.GetCatalogAsync(id);
                 if (existing is null) return NotFound();
 
-                await catalogRepository.UpdateCatalogAsync(body.Id, body);
+                var catalog = mapper.Map<CreateCatalogDTO, Catalog>(body, existing);
+                await catalogRepository.UpdateCatalogAsync(id, catalog);
 
                 return new NoContentResult();
             }

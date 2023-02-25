@@ -35,17 +35,17 @@ namespace Schowek.Library.Repositories
 
         public async Task<Catalog?> UpdateCatalogAsync(int catalogId, Catalog catalog)
         {
-            Catalog? c = dataContext.Catalogs!.Find(catalogId);
-            if (c is null) return null;
+            Catalog? dbCatalog = dataContext.Catalogs!.Find(catalogId);
+            if (dbCatalog is null) return null;
 
             dataContext.Entry(catalog).State = EntityState.Modified;
 
-            c.CatalogName = catalog.CatalogName;
-            c.Description = catalog.Description;
-            c.Icon = catalog.Icon;
-            c.CatalogColor = catalog.CatalogColor;
+            dbCatalog.CatalogName = catalog.CatalogName;
+            dbCatalog.Description = catalog.Description;
+            dbCatalog.Icon = catalog.Icon;
+            dbCatalog.CatalogColor = catalog.CatalogColor;
 
-            dataContext.Catalogs.Update(c);
+            dataContext.Catalogs.Update(dbCatalog);
             await dataContext.SaveChangesAsync();
 
             return catalog;
@@ -83,15 +83,15 @@ namespace Schowek.Library.Repositories
 
         public Catalog UpdateCatalog(int catalogId, Catalog catalog)
         {
-            Catalog? c = dataContext.Catalogs!.Find(catalogId);
-            if (c is null) return null!;
+            Catalog? dbCatalog = dataContext.Catalogs!.Find(catalogId);
+            if (dbCatalog is null) return null!;
 
-            c.CatalogName = catalog.CatalogName;
-            c.Description = catalog.Description;
-            c.Icon = catalog.Icon;
-            c.CatalogColor = catalog.CatalogColor;
+            dbCatalog.CatalogName = catalog.CatalogName;
+            dbCatalog.Description = catalog.Description;
+            dbCatalog.Icon = catalog.Icon;
+            dbCatalog.CatalogColor = catalog.CatalogColor;
 
-            dataContext.Catalogs.Update(c);
+            dataContext.Catalogs.Update(dbCatalog);
             dataContext.SaveChanges();
 
             return catalog;
