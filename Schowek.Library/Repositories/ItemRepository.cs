@@ -15,14 +15,14 @@ namespace Schowek.Library.Repositories
 
         public async Task<Item> AddItem(Item item)
         {
-            await dataContext.Items.AddAsync(item);
+            await dataContext.Items!.AddAsync(item);
             await dataContext.SaveChangesAsync();
             return item;
         }
 
         public async Task<Item> DeleteItem(int itemId)
         {
-            Item item = dataContext.Items.Find(itemId);
+            Item? item = dataContext.Items!.Find(itemId);
             if (item is null) return null!;
 
             dataContext.Items.Remove(item);
@@ -31,21 +31,32 @@ namespace Schowek.Library.Repositories
             return item;
         }
 
-        public async Task<Item> GetItem(int itemId)
+        public async Task<Item> GetItemAsync(int itemId)
         {
-            var item = await dataContext.Items.FindAsync(itemId);
-            return item;
+            var item = await dataContext.Items!.FindAsync(itemId);
+            return item!;
         }
 
-        public async Task<IEnumerable<Item>> GetItems()
+        public async Task<IEnumerable<Item>> GetItemsAsync()
         {
-            var items = await dataContext.Items.ToListAsync();
+            var items = await dataContext.Items!.ToListAsync();
             return items;
         }
 
-        public async Task<Item> UpdateItem(Item item)
+        public async Task<Item?> UpdateItem(int itemId, Item item)
         {
-            throw new NotImplementedException();
+            Item? dbItem = dataContext.Items!.Find(itemId);
+            if (dbItem is null) return null;
+
+            dataContext.Entry(item).State = EntityState.Modified;
+
+            dbItem.Content = item.Content;
+            dbItem.ItemColor = item.ItemColor;
+
+            dataContext.Items.Update(dbItem);
+            await dataContext.SaveChangesAsync();
+
+            return item;
         }
     }
 }

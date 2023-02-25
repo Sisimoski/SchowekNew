@@ -4,10 +4,10 @@ namespace Schowek.Library.Interfaces
 {
     public interface IItemRepository
     {
-        Task<IEnumerable<Item>> GetItems();
-        Task<Item> GetItem(int itemId);
+        Task<IEnumerable<Item>> GetItemsAsync();
+        Task<Item> GetItemAsync(int itemId);
         Task<Item> AddItem(Item item);
-        Task<Item> UpdateItem(Item item);
+        Task<Item?> UpdateItem(int itemId, Item item);
         Task<Item> DeleteItem(int itemId);
     }
 }
