@@ -76,5 +76,46 @@ namespace SchowekAPI.Controllers
                 return StatusCode(StatusCodes.Status500InternalServerError);
             }
         }
+        [HttpPut("{id}")]
+        public async Task<ActionResult<Item>> Put(int id, [FromBody] CreateItemDTO body)
+        {
+            try
+            {
+                if (!ModelState.IsValid)
+                    return BadRequest(ModelState);
+
+                if (body is null) return BadRequest();
+                Item? existing = await itemRepository.GetItemAsync(id);
+                if (existing is null) return NotFound();
+
+                var item = mapper.Map<CreateItemDTO, Item>(body, existing);
+                await itemRepository.UpdateItemAsync(id, item);
+
+                return new NoContentResult();
+            }
+            catch (System.Exception)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError);
+            }
+        }
+
+        [HttpDelete("{id}")]
+        public async Task<ActionResult<Item>> Delete(int id)
+        {
+            try
+            {
+                if (!ModelState.IsValid)
+                    return BadRequest(ModelState);
+
+                var result = await itemRepository.GetItemAsync(id);
+                if (result is null) return NotFound();
+                await itemRepository.DeleteItemAsync(id);
+                return Ok(result);
+            }
+            catch (System.Exception)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError);
+            }
+        }
     }
 }
