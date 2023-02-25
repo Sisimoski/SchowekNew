@@ -6,8 +6,8 @@ namespace Schowek.Library.Interfaces
     {
         Task<IEnumerable<Item>> GetItemsAsync();
         Task<Item> GetItemAsync(int itemId);
-        Task<Item> AddItem(Item item);
-        Task<Item?> UpdateItem(int itemId, Item item);
-        Task<Item> DeleteItem(int itemId);
+        Task<Item> AddItemAsync(Item item);
+        Task<Item?> UpdateItemAsync(int itemId, Item item);
+        Task<Item> DeleteItemAsync(int itemId);
     }
 }

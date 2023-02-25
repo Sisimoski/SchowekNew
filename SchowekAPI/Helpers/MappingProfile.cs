@@ -11,6 +11,7 @@ namespace SchowekAPI.Helpers
             CreateMap<Catalog, CatalogDTO>();
             CreateMap<CreateCatalogDTO, Catalog>();
             CreateMap<Item, ItemDTO>();
+            CreateMap<CreateItemDTO, Item>();
         }
     }
 }

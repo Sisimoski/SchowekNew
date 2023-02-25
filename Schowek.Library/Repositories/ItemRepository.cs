@@ -13,24 +13,6 @@ namespace Schowek.Library.Repositories
             this.dataContext = dataContext;
         }
 
-        public async Task<Item> AddItem(Item item)
-        {
-            await dataContext.Items!.AddAsync(item);
-            await dataContext.SaveChangesAsync();
-            return item;
-        }
-
-        public async Task<Item> DeleteItem(int itemId)
-        {
-            Item? item = dataContext.Items!.Find(itemId);
-            if (item is null) return null!;
-
-            dataContext.Items.Remove(item);
-            await dataContext.SaveChangesAsync();
-
-            return item;
-        }
-
         public async Task<Item> GetItemAsync(int itemId)
         {
             var item = await dataContext.Items!.FindAsync(itemId);
@@ -43,7 +25,14 @@ namespace Schowek.Library.Repositories
             return items;
         }
 
-        public async Task<Item?> UpdateItem(int itemId, Item item)
+        public async Task<Item> AddItemAsync(Item item)
+        {
+            await dataContext.Items!.AddAsync(item);
+            await dataContext.SaveChangesAsync();
+            return item;
+        }
+
+        public async Task<Item?> UpdateItemAsync(int itemId, Item item)
         {
             Item? dbItem = dataContext.Items!.Find(itemId);
             if (dbItem is null) return null;
@@ -54,6 +43,17 @@ namespace Schowek.Library.Repositories
             dbItem.ItemColor = item.ItemColor;
 
             dataContext.Items.Update(dbItem);
+            await dataContext.SaveChangesAsync();
+
+            return item;
+        }
+
+        public async Task<Item> DeleteItemAsync(int itemId)
+        {
+            Item? item = dataContext.Items!.Find(itemId);
+            if (item is null) return null!;
+
+            dataContext.Items.Remove(item);
             await dataContext.SaveChangesAsync();
 
             return item;
