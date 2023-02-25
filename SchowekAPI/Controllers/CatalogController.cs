@@ -13,11 +13,13 @@ namespace SchowekAPI.Controllers
     {
         private readonly IMapper mapper;
         private readonly ICatalogRepository catalogRepository;
+        private readonly ILogger<CatalogController> logger;
 
-        public CatalogController(IMapper mapper, ICatalogRepository catalogRepository)
+        public CatalogController(IMapper mapper, ICatalogRepository catalogRepository, ILogger<CatalogController> logger)
         {
             this.mapper = mapper;
             this.catalogRepository = catalogRepository;
+            this.logger = logger;
         }
 
         [HttpGet]
