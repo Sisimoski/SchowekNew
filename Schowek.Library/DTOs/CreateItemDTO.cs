@@ -1,17 +1,16 @@
-using System.ComponentModel.DataAnnotations;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 using Schowek.Library.Models.Enums;
 
 namespace Schowek.Library.DTOs
 {
-    public class ItemDTO
+    public class CreateItemDTO
     {
         public string? Content { get; set; }
         public string? FileName { get; set; }
-        public string? FilePath { get; set; }
-        public string? FileType { get; set; }
-        public long FileSize { get; set; }
         public Colors ItemColor { get; set; }
-        public DateTime OnCreated { get; set; }
         public int CatalogId { get; set; }
     }
 }

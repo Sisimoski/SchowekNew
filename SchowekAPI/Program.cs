@@ -15,6 +15,7 @@ try
     var builder = WebApplication.CreateBuilder(args);
 
     // Add services to the container.
+
     builder.Services.AddControllers().AddJsonOptions(options =>
     {
         options.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles;
@@ -25,13 +26,9 @@ try
     {
         options.UseSqlite(builder.Configuration.GetConnectionString("DevelopmentConnection"));
     });
-
-    // NLog: Setup NLog for Dependency injection
-    builder.Logging.ClearProviders();
-    builder.Host.UseNLog();
-
     builder.Services.AddScoped<Seeder>();
     builder.Services.AddScoped<ICatalogRepository, CatalogRepository>();
+    builder.Services.AddScoped<IItemRepository, ItemRepository>();
     builder.Services.AddEndpointsApiExplorer();
     builder.Services.AddSwaggerGen();
     builder.Services.AddAutoMapper(typeof(Program));

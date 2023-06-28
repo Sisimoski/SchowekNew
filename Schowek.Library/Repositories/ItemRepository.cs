@@ -13,39 +13,50 @@ namespace Schowek.Library.Repositories
             this.dataContext = dataContext;
         }
 
-        public async Task<Item> AddItem(Item item)
+        public async Task<Item> GetItemAsync(int itemId)
         {
-            await dataContext.Items.AddAsync(item);
+            var item = await dataContext.Items!.FindAsync(itemId);
+            return item!;
+        }
+
+        public async Task<IEnumerable<Item>> GetItemsAsync()
+        {
+            var items = await dataContext.Items!.ToListAsync();
+            return items;
+        }
+
+        public async Task<Item> AddItemAsync(Item item)
+        {
+            await dataContext.Items!.AddAsync(item);
             await dataContext.SaveChangesAsync();
             return item;
         }
 
-        public async Task<Item> DeleteItem(int itemId)
+        public async Task<Item?> UpdateItemAsync(int itemId, Item item)
         {
-            Item item = dataContext.Items.Find(itemId);
+            Item? dbItem = dataContext.Items!.Find(itemId);
+            if (dbItem is null) return null;
+
+            dataContext.Entry(item).State = EntityState.Modified;
+
+            dbItem.Content = item.Content;
+            dbItem.ItemColor = item.ItemColor;
+
+            dataContext.Items.Update(dbItem);
+            await dataContext.SaveChangesAsync();
+
+            return item;
+        }
+
+        public async Task<Item> DeleteItemAsync(int itemId)
+        {
+            Item? item = dataContext.Items!.Find(itemId);
             if (item is null) return null!;
 
             dataContext.Items.Remove(item);
             await dataContext.SaveChangesAsync();
 
             return item;
-        }
-
-        public async Task<Item> GetItem(int itemId)
-        {
-            var item = await dataContext.Items.FindAsync(itemId);
-            return item;
-        }
-
-        public async Task<IEnumerable<Item>> GetItems()
-        {
-            var items = await dataContext.Items.ToListAsync();
-            return items;
-        }
-
-        public async Task<Item> UpdateItem(Item item)
-        {
-            throw new NotImplementedException();
         }
     }
 }
