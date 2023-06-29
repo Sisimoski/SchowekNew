@@ -1,7 +1,7 @@
 global using Microsoft.EntityFrameworkCore;
-using Schowek.Library.Interfaces;
-using Schowek.Library.Data;
-using Schowek.Library.Repositories;
+using Schowek.Shared.Core.Interfaces;
+using Schowek.Shared.Core.Data;
+using Schowek.Shared.Core.Repositories;
 using System.Text.Json.Serialization;
 
 var builder = WebApplication.CreateBuilder(args);

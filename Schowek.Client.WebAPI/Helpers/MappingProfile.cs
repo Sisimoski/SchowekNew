@@ -1,6 +1,6 @@
 using AutoMapper;
-using Schowek.Library.DTOs;
-using Schowek.Library.Models;
+using Schowek.Shared.Core.DTOs;
+using Schowek.Shared.Core.Models;
 
 namespace SchowekAPI.Helpers
 {

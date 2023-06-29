@@ -1,31 +1,32 @@
-using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
-using Schowek.Library.DTOs;
-using Schowek.Library.Interfaces;
-using Schowek.Library.Models;
+using AutoMapper;
+using Schowek.Shared.Core.Interfaces;
+using Schowek.Shared.Core.DTOs;
+using Schowek.Shared.Core.Models;
 
-namespace SchowekAPI.Controllers
+namespace Schowek.Client.WebAPI.Controllers
 {
-    [ApiController]
+
     [Route("api/[controller]")]
-    public class ItemController : ControllerBase
+    [ApiController]
+    public class CatalogController : ControllerBase
     {
         private readonly IMapper mapper;
-        private readonly IItemRepository itemRepository;
+        private readonly ICatalogRepository catalogRepository;
 
-        public ItemController(IMapper mapper, IItemRepository itemRepository)
+        public CatalogController(IMapper mapper, ICatalogRepository catalogRepository)
         {
             this.mapper = mapper;
-            this.itemRepository = itemRepository;
+            this.catalogRepository = catalogRepository;
         }
 
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<ItemDTO>>> Get()
+        public async Task<ActionResult<IEnumerable<CatalogDTO>>> Get()
         {
             try
             {
-                var items = await this.itemRepository.GetItemsAsync();
-                var result = mapper.Map<IEnumerable<ItemDTO>>(items);
+                var catalogs = await catalogRepository.GetCatalogsAsync();
+                var result = mapper.Map<IEnumerable<CatalogDTO>>(catalogs);
 
                 if (result is null)
                 {
@@ -36,48 +37,50 @@ namespace SchowekAPI.Controllers
                     return Ok(result);
                 }
             }
-            catch (System.Exception)
+            catch (Exception)
             {
                 return StatusCode(StatusCodes.Status500InternalServerError);
             }
         }
 
         [HttpGet("{id}")]
-        public async Task<ActionResult<ItemDTO>> Get(int id)
+        public async Task<ActionResult<CatalogDTO>> Get(int id)
         {
             try
             {
-                var item = await this.itemRepository.GetItemAsync(id);
-                var result = mapper.Map<ItemDTO>(item);
+                var catalog = await catalogRepository.GetCatalogAsync(id);
+                var result = mapper.Map<CatalogDTO>(catalog);
 
                 if (result is null) return NotFound();
                 return Ok(result);
             }
-            catch (System.Exception)
+            catch (Exception)
             {
                 return StatusCode(StatusCodes.Status500InternalServerError);
             }
         }
+
         [HttpPost]
-        public async Task<ActionResult<Item>> Post([FromBody] CreateItemDTO body)
+        public async Task<ActionResult<Catalog>> Create([FromBody] CreateCatalogDTO body)
         {
             try
             {
                 if (!ModelState.IsValid)
                     return BadRequest(ModelState);
 
-                var item = mapper.Map<Item>(body);
-                var result = await this.itemRepository.AddItemAsync(item);
+                var catalog = mapper.Map<Catalog>(body);
+                var result = await catalogRepository.AddCatalogAsync(catalog);
                 if (result is null) return BadRequest();
-                return Created($"/api/item/{item.Id}", result);
+                return Created($"/api/catalog/{catalog.Id}", result);
             }
-            catch (System.Exception)
+            catch (Exception)
             {
                 return StatusCode(StatusCodes.Status500InternalServerError);
             }
         }
+
         [HttpPut("{id}")]
-        public async Task<ActionResult<Item>> Put(int id, [FromBody] CreateItemDTO body)
+        public async Task<ActionResult<Catalog>> Update(int id, [FromBody] CreateCatalogDTO body)
         {
             try
             {
@@ -85,34 +88,34 @@ namespace SchowekAPI.Controllers
                     return BadRequest(ModelState);
 
                 if (body is null) return BadRequest();
-                Item? existing = await itemRepository.GetItemAsync(id);
+                Catalog? existing = await catalogRepository.GetCatalogAsync(id);
                 if (existing is null) return NotFound();
 
-                var item = mapper.Map<CreateItemDTO, Item>(body, existing);
-                await itemRepository.UpdateItemAsync(id, item);
+                var catalog = mapper.Map<CreateCatalogDTO, Catalog>(body, existing);
+                await catalogRepository.UpdateCatalogAsync(id, catalog);
 
                 return new NoContentResult();
             }
-            catch (System.Exception)
+            catch (Exception)
             {
                 return StatusCode(StatusCodes.Status500InternalServerError);
             }
         }
 
         [HttpDelete("{id}")]
-        public async Task<ActionResult<Item>> Delete(int id)
+        public async Task<ActionResult<Catalog>> Delete(int id)
         {
             try
             {
                 if (!ModelState.IsValid)
                     return BadRequest(ModelState);
 
-                var result = await itemRepository.GetItemAsync(id);
+                var result = await catalogRepository.GetCatalogAsync(id);
                 if (result is null) return NotFound();
-                await itemRepository.DeleteItemAsync(id);
+                await catalogRepository.DeleteCatalogAsync(id);
                 return Ok(result);
             }
-            catch (System.Exception)
+            catch (Exception)
             {
                 return StatusCode(StatusCodes.Status500InternalServerError);
             }

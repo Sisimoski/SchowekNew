@@ -5,7 +5,7 @@ VisualStudioVersion = 17.0.31903.59
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Schowek.Shared.Core", "Schowek.Shared.Core\Schowek.Shared.Core.csproj", "{4BAEA2D5-75E4-403A-B081-C47B4BE1FE6A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SchowekAPI", "SchowekAPI\SchowekAPI.csproj", "{586D8D18-48CA-430B-810B-6400FFCEDC12}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Schowek.Client.WebAPI", "Schowek.Client.WebAPI\Schowek.Client.WebAPI.csproj", "{586D8D18-48CA-430B-810B-6400FFCEDC12}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Schowek.Client.BlazorWASM", "Schowek.Client.BlazorWASM\Schowek.Client.BlazorWASM.csproj", "{F40B77A0-F3FA-42B5-8C71-B3A8172CEBCE}"
 EndProject
@@ -13,9 +13,6 @@ Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
-	EndGlobalSection
-	GlobalSection(SolutionProperties) = preSolution
-		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
 		{4BAEA2D5-75E4-403A-B081-C47B4BE1FE6A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
@@ -30,5 +27,8 @@ Global
 		{F40B77A0-F3FA-42B5-8C71-B3A8172CEBCE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F40B77A0-F3FA-42B5-8C71-B3A8172CEBCE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F40B77A0-F3FA-42B5-8C71-B3A8172CEBCE}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
 	EndGlobalSection
 EndGlobal
