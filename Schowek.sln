@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Schowek.Library", "Schowek.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SchowekAPI", "SchowekAPI\SchowekAPI.csproj", "{586D8D18-48CA-430B-810B-6400FFCEDC12}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Schowek.Client.BlazorWASM", "Schowek.Client.BlazorWASM\Schowek.Client.BlazorWASM.csproj", "{F40B77A0-F3FA-42B5-8C71-B3A8172CEBCE}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -24,5 +26,9 @@ Global
 		{586D8D18-48CA-430B-810B-6400FFCEDC12}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{586D8D18-48CA-430B-810B-6400FFCEDC12}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{586D8D18-48CA-430B-810B-6400FFCEDC12}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F40B77A0-F3FA-42B5-8C71-B3A8172CEBCE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F40B77A0-F3FA-42B5-8C71-B3A8172CEBCE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F40B77A0-F3FA-42B5-8C71-B3A8172CEBCE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F40B77A0-F3FA-42B5-8C71-B3A8172CEBCE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
