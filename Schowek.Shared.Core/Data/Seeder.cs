@@ -2,9 +2,9 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Schowek.Library.Models;
+using Schowek.Shared.Core.Models;
 
-namespace Schowek.Library.Data
+namespace Schowek.Shared.Core.Data
 {
     public class Seeder
     {

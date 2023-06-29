@@ -3,11 +3,11 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using Schowek.Library.Data;
+using Schowek.Shared.Core.Data;
 
 #nullable disable
 
-namespace Schowek.Library.Data.Migrations
+namespace Schowek.Shared.Core.Data.Migrations
 {
     [DbContext(typeof(DataContext))]
     partial class DataContextModelSnapshot : ModelSnapshot

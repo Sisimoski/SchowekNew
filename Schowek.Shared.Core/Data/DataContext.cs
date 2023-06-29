@@ -1,7 +1,7 @@
 using Microsoft.EntityFrameworkCore;
-using Schowek.Library.Models;
+using Schowek.Shared.Core.Models;
 
-namespace Schowek.Library.Data
+namespace Schowek.Shared.Core.Data
 {
     public class DataContext : DbContext
     {

@@ -1,9 +1,9 @@
-using Schowek.Library.Interfaces;
-using Schowek.Library.Models;
-using Schowek.Library.Data;
 using Microsoft.EntityFrameworkCore;
+using Schowek.Shared.Core.Data;
+using Schowek.Shared.Core.Interfaces;
+using Schowek.Shared.Core.Models;
 
-namespace Schowek.Library.Repositories
+namespace Schowek.Shared.Core.Repositories
 {
     public class CatalogRepository : ICatalogRepository
     {

@@ -1,7 +1,6 @@
-using Schowek.Library.Models;
-using Schowek.Library.Models.Enums;
+using Schowek.Shared.Core.Models.Enums;
 
-namespace Schowek.Library.DTOs
+namespace Schowek.Shared.Core.DTOs
 {
     public class CatalogDTO
     {

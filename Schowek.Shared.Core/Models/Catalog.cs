@@ -1,7 +1,7 @@
 using System.ComponentModel.DataAnnotations;
-using Schowek.Library.Models.Enums;
+using Schowek.Shared.Core.Models.Enums;
 
-namespace Schowek.Library.Models
+namespace Schowek.Shared.Core.Models
 {
     public class Catalog
     {

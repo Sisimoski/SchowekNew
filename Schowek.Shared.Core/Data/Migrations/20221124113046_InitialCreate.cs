@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
-namespace Schowek.Library.Data.Migrations
+namespace Schowek.Shared.Core.Data.Migrations
 {
     public partial class InitialCreate : Migration
     {

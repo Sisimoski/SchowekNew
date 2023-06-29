@@ -8,7 +8,7 @@ using Schowek.Library.Data;
 
 #nullable disable
 
-namespace Schowek.Library.Data.Migrations
+namespace Schowek.Shared.Core.Data.Migrations
 {
     [DbContext(typeof(DataContext))]
     [Migration("20221124113046_InitialCreate")]

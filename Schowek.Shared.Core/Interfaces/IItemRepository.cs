@@ -1,6 +1,6 @@
-using Schowek.Library.Models;
+using Schowek.Shared.Core.Models;
 
-namespace Schowek.Library.Interfaces
+namespace Schowek.Shared.Core.Interfaces
 {
     public interface IItemRepository
     {

@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.0.31903.59
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Schowek.Library", "Schowek.Library\Schowek.Library.csproj", "{4BAEA2D5-75E4-403A-B081-C47B4BE1FE6A}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Schowek.Shared.Core", "Schowek.Shared.Core\Schowek.Shared.Core.csproj", "{4BAEA2D5-75E4-403A-B081-C47B4BE1FE6A}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SchowekAPI", "SchowekAPI\SchowekAPI.csproj", "{586D8D18-48CA-430B-810B-6400FFCEDC12}"
 EndProject

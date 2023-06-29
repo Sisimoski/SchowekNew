@@ -4,11 +4,11 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using Schowek.Library.Data;
+using Schowek.Shared.Core.Data;
 
 #nullable disable
 
-namespace Schowek.Library.Data.Migrations
+namespace Schowek.Shared.Core.Data.Migrations
 {
     [DbContext(typeof(DataContext))]
     [Migration("20230224203522_AddSeeder")]

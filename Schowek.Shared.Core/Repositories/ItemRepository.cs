@@ -1,9 +1,9 @@
 using Microsoft.EntityFrameworkCore;
-using Schowek.Library.Data;
-using Schowek.Library.Interfaces;
-using Schowek.Library.Models;
+using Schowek.Shared.Core.Data;
+using Schowek.Shared.Core.Interfaces;
+using Schowek.Shared.Core.Models;
 
-namespace Schowek.Library.Repositories
+namespace Schowek.Shared.Core.Repositories
 {
     public class ItemRepository : IItemRepository
     {

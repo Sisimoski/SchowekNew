@@ -1,10 +1,6 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Schowek.Library.Models.Enums;
+using Schowek.Shared.Core.Models.Enums;
 
-namespace Schowek.Library.DTOs
+namespace Schowek.Shared.Core.DTOs
 {
     public class CreateItemDTO
     {

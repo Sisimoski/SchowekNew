@@ -1,4 +1,4 @@
-namespace Schowek.Library.Models.Enums
+namespace Schowek.Shared.Core.Models.Enums
 {
     public enum TypesOfItem
     {
