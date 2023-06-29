@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Schowek.Client.WebAPI", "Sc
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Schowek.Client.BlazorWASM", "Schowek.Client.BlazorWASM\Schowek.Client.BlazorWASM.csproj", "{F40B77A0-F3FA-42B5-8C71-B3A8172CEBCE}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Schowek.Shared.Infrastructure", "Schowek.Shared.Infrastructure\Schowek.Shared.Infrastructure.csproj", "{D293654B-77CE-4461-9D58-C2BEF268EFDF}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{F40B77A0-F3FA-42B5-8C71-B3A8172CEBCE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F40B77A0-F3FA-42B5-8C71-B3A8172CEBCE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F40B77A0-F3FA-42B5-8C71-B3A8172CEBCE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D293654B-77CE-4461-9D58-C2BEF268EFDF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D293654B-77CE-4461-9D58-C2BEF268EFDF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D293654B-77CE-4461-9D58-C2BEF268EFDF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D293654B-77CE-4461-9D58-C2BEF268EFDF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
