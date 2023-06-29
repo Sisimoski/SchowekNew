@@ -3,8 +3,6 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.0.31903.59
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Schowek.ClientConsole", "Schowek.ClientConsole\Schowek.ClientConsole.csproj", "{E12ECAFD-6849-465C-8395-8675570258F5}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Schowek.Library", "Schowek.Library\Schowek.Library.csproj", "{4BAEA2D5-75E4-403A-B081-C47B4BE1FE6A}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SchowekAPI", "SchowekAPI\SchowekAPI.csproj", "{586D8D18-48CA-430B-810B-6400FFCEDC12}"
@@ -18,10 +16,6 @@ Global
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{E12ECAFD-6849-465C-8395-8675570258F5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{E12ECAFD-6849-465C-8395-8675570258F5}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{E12ECAFD-6849-465C-8395-8675570258F5}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{E12ECAFD-6849-465C-8395-8675570258F5}.Release|Any CPU.Build.0 = Release|Any CPU
 		{4BAEA2D5-75E4-403A-B081-C47B4BE1FE6A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{4BAEA2D5-75E4-403A-B081-C47B4BE1FE6A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4BAEA2D5-75E4-403A-B081-C47B4BE1FE6A}.Release|Any CPU.ActiveCfg = Release|Any CPU
