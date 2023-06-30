@@ -1,7 +1,7 @@
 using Microsoft.EntityFrameworkCore;
-using Schowek.Shared.Core.Models;
+using Schowek.Shared.Domain.Models;
 
-namespace Schowek.Shared.Core.Data
+namespace Schowek.Shared.Infrastructure.Data
 {
     public class DataContext : DbContext
     {
@@ -18,7 +18,7 @@ namespace Schowek.Shared.Core.Data
         {
             if (!optionsBuilder.IsConfigured)
             {
-                optionsBuilder.UseSqlite("Data Source=/Users/sisimoski/Documents/Development 👨‍💻/SchowekNew/Schowek.Library/Data/app.db");
+                optionsBuilder.UseSqlite("Data Source=/Users/sisimoski/Documents/Development 👨‍💻/SchowekNew/Schowek.Shared.Infrastructure/Data/app.db");
             }
         }
     }

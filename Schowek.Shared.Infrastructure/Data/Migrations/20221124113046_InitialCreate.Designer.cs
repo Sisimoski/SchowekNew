@@ -2,17 +2,19 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using Schowek.Shared.Core.Data;
+using Schowek.Shared.Infrastructure.Data;
 
 #nullable disable
 
-namespace Schowek.Shared.Core.Data.Migrations
+namespace Schowek.Shared.Infrastructure.Data.Migrations
 {
     [DbContext(typeof(DataContext))]
-    partial class DataContextModelSnapshot : ModelSnapshot
+    [Migration("20221124113046_InitialCreate")]
+    partial class InitialCreate
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "6.0.9");
@@ -23,7 +25,7 @@ namespace Schowek.Shared.Core.Data.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
-                    b.Property<int?>("CatalogColor")
+                    b.Property<int>("CatalogColor")
                         .HasColumnType("INTEGER");
 
                     b.Property<string>("CatalogName")

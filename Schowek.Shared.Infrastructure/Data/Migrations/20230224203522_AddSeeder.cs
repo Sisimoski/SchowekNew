@@ -2,7 +2,7 @@
 
 #nullable disable
 
-namespace Schowek.Shared.Core.Data.Migrations
+namespace Schowek.Shared.Infrastructure.Data.Migrations
 {
     public partial class AddSeeder : Migration
     {

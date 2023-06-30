@@ -4,15 +4,15 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using Schowek.Library.Data;
+using Schowek.Shared.Infrastructure.Data;
 
 #nullable disable
 
-namespace Schowek.Shared.Core.Data.Migrations
+namespace Schowek.Shared.Infrastructure.Data.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20221124113046_InitialCreate")]
-    partial class InitialCreate
+    [Migration("20230224203522_AddSeeder")]
+    partial class AddSeeder
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -25,7 +25,7 @@ namespace Schowek.Shared.Core.Data.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
-                    b.Property<int>("CatalogColor")
+                    b.Property<int?>("CatalogColor")
                         .HasColumnType("INTEGER");
 
                     b.Property<string>("CatalogName")

@@ -1,8 +1,12 @@
-using Schowek.Shared.Core.Models;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+using Schowek.Shared.Domain.Models;
 
 namespace Schowek.Shared.Core.Interfaces
 {
-    public interface IItemRepository
+    public interface IItemService
     {
         Task<IEnumerable<Item>> GetItemsAsync();
         Task<Item> GetItemAsync(int itemId);

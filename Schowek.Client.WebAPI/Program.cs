@@ -1,8 +1,9 @@
 global using Microsoft.EntityFrameworkCore;
 using Schowek.Shared.Core.Interfaces;
-using Schowek.Shared.Core.Data;
-using Schowek.Shared.Core.Repositories;
 using System.Text.Json.Serialization;
+using Schowek.Shared.Infrastructure.Data;
+using Schowek.Shared.Core.Services;
+using Schowek.Shared.Infrastructure.Repositories;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -19,6 +20,8 @@ builder.Services.AddDbContext<DataContext>(options =>
     options.UseSqlite(builder.Configuration.GetConnectionString("DevelopmentConnection"));
 });
 builder.Services.AddScoped<Seeder>();
+builder.Services.AddScoped<ICatalogService, CatalogService>();
+builder.Services.AddScoped<IItemService, ItemService>();
 builder.Services.AddScoped<ICatalogRepository, CatalogRepository>();
 builder.Services.AddScoped<IItemRepository, ItemRepository>();
 builder.Services.AddEndpointsApiExplorer();

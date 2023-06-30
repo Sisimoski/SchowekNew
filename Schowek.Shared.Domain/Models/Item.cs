@@ -1,7 +1,7 @@
 using System.ComponentModel.DataAnnotations;
-using Schowek.Shared.Core.Models.Enums;
+using Schowek.Shared.Domain.Models.Enums;
 
-namespace Schowek.Shared.Core.Models
+namespace Schowek.Shared.Domain.Models
 {
     public class Item
     {

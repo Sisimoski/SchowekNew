@@ -1,4 +1,4 @@
-using Schowek.Shared.Core.Models.Enums;
+using Schowek.Shared.Domain.Models.Enums;
 
 namespace Schowek.Shared.Core.DTOs
 {

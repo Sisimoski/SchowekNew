@@ -2,7 +2,7 @@ using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using Schowek.Shared.Core.DTOs;
 using Schowek.Shared.Core.Interfaces;
-using Schowek.Shared.Core.Models;
+using Schowek.Shared.Domain.Models;
 
 namespace Schowek.Client.WebAPI.Controllers
 {
@@ -11,12 +11,12 @@ namespace Schowek.Client.WebAPI.Controllers
     public class ItemController : ControllerBase
     {
         private readonly IMapper mapper;
-        private readonly IItemRepository itemRepository;
+        private readonly IItemService itemService;
 
-        public ItemController(IMapper mapper, IItemRepository itemRepository)
+        public ItemController(IMapper mapper, IItemService itemService)
         {
             this.mapper = mapper;
-            this.itemRepository = itemRepository;
+            this.itemService = itemService;
         }
 
         [HttpGet]
@@ -24,7 +24,7 @@ namespace Schowek.Client.WebAPI.Controllers
         {
             try
             {
-                var items = await itemRepository.GetItemsAsync();
+                var items = await itemService.GetItemsAsync();
                 var result = mapper.Map<IEnumerable<ItemDTO>>(items);
 
                 if (result is null)
@@ -47,7 +47,7 @@ namespace Schowek.Client.WebAPI.Controllers
         {
             try
             {
-                var item = await itemRepository.GetItemAsync(id);
+                var item = await itemService.GetItemAsync(id);
                 var result = mapper.Map<ItemDTO>(item);
 
                 if (result is null) return NotFound();
@@ -67,7 +67,7 @@ namespace Schowek.Client.WebAPI.Controllers
                     return BadRequest(ModelState);
 
                 var item = mapper.Map<Item>(body);
-                var result = await itemRepository.AddItemAsync(item);
+                var result = await itemService.AddItemAsync(item);
                 if (result is null) return BadRequest();
                 return Created($"/api/item/{item.Id}", result);
             }
@@ -85,11 +85,11 @@ namespace Schowek.Client.WebAPI.Controllers
                     return BadRequest(ModelState);
 
                 if (body is null) return BadRequest();
-                Item? existing = await itemRepository.GetItemAsync(id);
+                Item? existing = await itemService.GetItemAsync(id);
                 if (existing is null) return NotFound();
 
                 var item = mapper.Map<CreateItemDTO, Item>(body, existing);
-                await itemRepository.UpdateItemAsync(id, item);
+                await itemService.UpdateItemAsync(id, item);
 
                 return new NoContentResult();
             }
@@ -107,9 +107,9 @@ namespace Schowek.Client.WebAPI.Controllers
                 if (!ModelState.IsValid)
                     return BadRequest(ModelState);
 
-                var result = await itemRepository.GetItemAsync(id);
+                var result = await itemService.GetItemAsync(id);
                 if (result is null) return NotFound();
-                await itemRepository.DeleteItemAsync(id);
+                await itemService.DeleteItemAsync(id);
                 return Ok(result);
             }
             catch (Exception)

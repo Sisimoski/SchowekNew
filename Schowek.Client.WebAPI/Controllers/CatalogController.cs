@@ -2,7 +2,7 @@ using Microsoft.AspNetCore.Mvc;
 using AutoMapper;
 using Schowek.Shared.Core.Interfaces;
 using Schowek.Shared.Core.DTOs;
-using Schowek.Shared.Core.Models;
+using Schowek.Shared.Domain.Models;
 
 namespace Schowek.Client.WebAPI.Controllers
 {
@@ -12,12 +12,12 @@ namespace Schowek.Client.WebAPI.Controllers
     public class CatalogController : ControllerBase
     {
         private readonly IMapper mapper;
-        private readonly ICatalogRepository catalogRepository;
+        private readonly ICatalogService catalogService;
 
-        public CatalogController(IMapper mapper, ICatalogRepository catalogRepository)
+        public CatalogController(IMapper mapper, ICatalogService catalogService)
         {
             this.mapper = mapper;
-            this.catalogRepository = catalogRepository;
+            this.catalogService = catalogService;
         }
 
         [HttpGet]
@@ -25,7 +25,7 @@ namespace Schowek.Client.WebAPI.Controllers
         {
             try
             {
-                var catalogs = await catalogRepository.GetCatalogsAsync();
+                var catalogs = await catalogService.GetCatalogsAsync();
                 var result = mapper.Map<IEnumerable<CatalogDTO>>(catalogs);
 
                 if (result is null)
@@ -48,7 +48,7 @@ namespace Schowek.Client.WebAPI.Controllers
         {
             try
             {
-                var catalog = await catalogRepository.GetCatalogAsync(id);
+                var catalog = await catalogService.GetCatalogAsync(id);
                 var result = mapper.Map<CatalogDTO>(catalog);
 
                 if (result is null) return NotFound();
@@ -69,7 +69,7 @@ namespace Schowek.Client.WebAPI.Controllers
                     return BadRequest(ModelState);
 
                 var catalog = mapper.Map<Catalog>(body);
-                var result = await catalogRepository.AddCatalogAsync(catalog);
+                var result = await catalogService.AddCatalogAsync(catalog);
                 if (result is null) return BadRequest();
                 return Created($"/api/catalog/{catalog.Id}", result);
             }
@@ -88,11 +88,11 @@ namespace Schowek.Client.WebAPI.Controllers
                     return BadRequest(ModelState);
 
                 if (body is null) return BadRequest();
-                Catalog? existing = await catalogRepository.GetCatalogAsync(id);
+                Catalog? existing = await catalogService.GetCatalogAsync(id);
                 if (existing is null) return NotFound();
 
                 var catalog = mapper.Map<CreateCatalogDTO, Catalog>(body, existing);
-                await catalogRepository.UpdateCatalogAsync(id, catalog);
+                await catalogService.UpdateCatalogAsync(id, catalog);
 
                 return new NoContentResult();
             }
@@ -110,9 +110,9 @@ namespace Schowek.Client.WebAPI.Controllers
                 if (!ModelState.IsValid)
                     return BadRequest(ModelState);
 
-                var result = await catalogRepository.GetCatalogAsync(id);
+                var result = await catalogService.GetCatalogAsync(id);
                 if (result is null) return NotFound();
-                await catalogRepository.DeleteCatalogAsync(id);
+                await catalogService.DeleteCatalogAsync(id);
                 return Ok(result);
             }
             catch (Exception)
