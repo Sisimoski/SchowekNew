@@ -3,25 +3,26 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.0.31903.59
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Schowek.ClientConsole", "Schowek.ClientConsole\Schowek.ClientConsole.csproj", "{E12ECAFD-6849-465C-8395-8675570258F5}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Schowek.Shared.Core", "Schowek.Shared.Core\Schowek.Shared.Core.csproj", "{4BAEA2D5-75E4-403A-B081-C47B4BE1FE6A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Schowek.Library", "Schowek.Library\Schowek.Library.csproj", "{4BAEA2D5-75E4-403A-B081-C47B4BE1FE6A}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Schowek.Client.WebAPI", "Schowek.Client.WebAPI\Schowek.Client.WebAPI.csproj", "{586D8D18-48CA-430B-810B-6400FFCEDC12}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SchowekAPI", "SchowekAPI\SchowekAPI.csproj", "{586D8D18-48CA-430B-810B-6400FFCEDC12}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Schowek.Client.BlazorWASM", "Schowek.Client.BlazorWASM\Schowek.Client.BlazorWASM.csproj", "{F40B77A0-F3FA-42B5-8C71-B3A8172CEBCE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Schowek.Shared.Infrastructure", "Schowek.Shared.Infrastructure\Schowek.Shared.Infrastructure.csproj", "{D293654B-77CE-4461-9D58-C2BEF268EFDF}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Clients", "Clients", "{0FDCAF71-5BCE-4CF4-8687-D0D160D1B9A0}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Shared", "Shared", "{FF9E37AE-B96D-4EA9-AF5B-E24D435B8030}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Schowek.Shared.Domain", "Schowek.Shared.Domain\Schowek.Shared.Domain.csproj", "{6F8289F4-3F06-4DE9-85FA-439AC4DA48C4}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
-	GlobalSection(SolutionProperties) = preSolution
-		HideSolutionNode = FALSE
-	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{E12ECAFD-6849-465C-8395-8675570258F5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{E12ECAFD-6849-465C-8395-8675570258F5}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{E12ECAFD-6849-465C-8395-8675570258F5}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{E12ECAFD-6849-465C-8395-8675570258F5}.Release|Any CPU.Build.0 = Release|Any CPU
 		{4BAEA2D5-75E4-403A-B081-C47B4BE1FE6A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{4BAEA2D5-75E4-403A-B081-C47B4BE1FE6A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4BAEA2D5-75E4-403A-B081-C47B4BE1FE6A}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -30,5 +31,27 @@ Global
 		{586D8D18-48CA-430B-810B-6400FFCEDC12}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{586D8D18-48CA-430B-810B-6400FFCEDC12}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{586D8D18-48CA-430B-810B-6400FFCEDC12}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F40B77A0-F3FA-42B5-8C71-B3A8172CEBCE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F40B77A0-F3FA-42B5-8C71-B3A8172CEBCE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F40B77A0-F3FA-42B5-8C71-B3A8172CEBCE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F40B77A0-F3FA-42B5-8C71-B3A8172CEBCE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D293654B-77CE-4461-9D58-C2BEF268EFDF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D293654B-77CE-4461-9D58-C2BEF268EFDF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D293654B-77CE-4461-9D58-C2BEF268EFDF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D293654B-77CE-4461-9D58-C2BEF268EFDF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6F8289F4-3F06-4DE9-85FA-439AC4DA48C4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6F8289F4-3F06-4DE9-85FA-439AC4DA48C4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6F8289F4-3F06-4DE9-85FA-439AC4DA48C4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6F8289F4-3F06-4DE9-85FA-439AC4DA48C4}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{F40B77A0-F3FA-42B5-8C71-B3A8172CEBCE} = {0FDCAF71-5BCE-4CF4-8687-D0D160D1B9A0}
+		{586D8D18-48CA-430B-810B-6400FFCEDC12} = {0FDCAF71-5BCE-4CF4-8687-D0D160D1B9A0}
+		{4BAEA2D5-75E4-403A-B081-C47B4BE1FE6A} = {FF9E37AE-B96D-4EA9-AF5B-E24D435B8030}
+		{D293654B-77CE-4461-9D58-C2BEF268EFDF} = {FF9E37AE-B96D-4EA9-AF5B-E24D435B8030}
+		{6F8289F4-3F06-4DE9-85FA-439AC4DA48C4} = {FF9E37AE-B96D-4EA9-AF5B-E24D435B8030}
 	EndGlobalSection
 EndGlobal
